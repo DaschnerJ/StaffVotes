@@ -1,0 +1,9 @@
+name: StaffVote
+main: io.github.daschnerj.staffvote.sVote
+version: 1.0.0
+commands:
+   vote:
+      description: This is the basic vote command. Use /vote help for more information.
+      usage: /vote help
+      permission: play.vote
+      permission-message: You don't have <permission>.
