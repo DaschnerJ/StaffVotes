@@ -181,11 +181,21 @@ public class sVote extends JavaPlugin implements Listener {
 	public void vote(UUID u, String n) {
 		
 		UUID c = null;
-		for(UUID v : users.keySet())
+		Player player = Bukkit.getPlayerExact(n);
+		if(player == null)
 		{
-			if(users.get(v).equalsIgnoreCase(n))
-				c = v;
+			for(UUID v : users.keySet())
+			{
+				if(v != null)
+					if(users.get(v).equalsIgnoreCase(n))
+						c = v;
+			}
 		}
+		else
+		{
+			c = player.getUniqueId();
+		}
+		
 		if (c != null) {
 			vote(u, c);
 		} else
@@ -614,12 +624,13 @@ public class sVote extends JavaPlugin implements Listener {
 		
 			for(UUID u : list.keySet())
 			{
-				if(topPicked == null)
-				{
-					topCanidates.add(u);
-					currentMax = list.get(u);
-				}
-				else if(currentMax < list.get(u))
+				//if(topPicked == null)
+				//{
+				//	topCanidates.add(u);
+				//	currentMax = list.get(u);
+				//}
+				//else 
+					if(currentMax < list.get(u))
 				{
 					topCanidates.clear();
 					currentMax = list.get(u);
