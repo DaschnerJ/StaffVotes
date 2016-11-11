@@ -179,7 +179,13 @@ public class sVote extends JavaPlugin implements Listener {
 	}
 
 	public void vote(UUID u, String n) {
-		UUID c = getUUID(Bukkit.getServer().getPlayer(n));
+		
+		UUID c = null;
+		for(UUID v : users.keySet())
+		{
+			if(users.get(v).equalsIgnoreCase(n))
+				c = v;
+		}
 		if (c != null) {
 			vote(u, c);
 		} else
